@@ -1,0 +1,4 @@
+.chalice/deployments/
+venv/
+.vscode/
+__pycache__/
