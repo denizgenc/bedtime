@@ -15,7 +15,7 @@ def get_ec2_instances():
             if sum([(i['Key'] == 'KeepAlive') for i in x['Tags']]) == 0]
 
 
-@app.schedule('cron(0 22 ? * MON-FRI)')
+@app.schedule('cron(0 22 ? * MON-FRI *)')
 def ec2_stop(event):
     """Stop the instances, return/log the name of each instance shut down"""
     instances = get_ec2_instances()
@@ -26,7 +26,7 @@ def ec2_stop(event):
     return text
 
 
-@app.schedule('cron(0 6 ? * MON-FRI)')
+@app.schedule('cron(0 6 ? * MON-FRI *)')
 def ec2_start(event):
     """Start the instances, return/log the name of each instance shut down"""
     instances = get_ec2_instances()
@@ -37,7 +37,7 @@ def ec2_start(event):
     return text
 
 
-@app.schedule('cron(* * * * ?)')
+@app.schedule('cron(* * * * ? *)')
 def ec2_test(event):
     """Scheduled to run every minute, so you can test whether things are actually working"""
     ec2_stop(None)  # Comment out as necessary

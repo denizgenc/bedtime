@@ -1,4 +1,6 @@
-.chalice/deployments/
+.chalice/deployments
+.chalice/deployed
 venv/
 .vscode/
 __pycache__/
+.DS_Store
