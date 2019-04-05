@@ -1,0 +1,40 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:DescribeInstances",
+        "ec2:StartInstances",
+        "ec2:StopInstances"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Sid": "b54d207730434db6bcce206c10a8c1d5"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "rds:DescribeDBInstances",
+        "rds:StartDBInstance",
+        "rds:StopDBInstance",
+        "rds:ListTagsForResource"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Sid": "c66059ac8af547c2888970217af56777"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "sts:GetCallerIdentity"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Sid": "f18f9a1e975141f29dda12c3d32ed615"
+    }
+  ]
+}
