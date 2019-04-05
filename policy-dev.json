@@ -2,6 +2,7 @@
   "Version": "2012-10-17",
   "Statement": [
     {
+      "Sid": "Ec2Perms",
       "Effect": "Allow",
       "Action": [
         "ec2:DescribeInstances",
@@ -10,10 +11,10 @@
       ],
       "Resource": [
         "*"
-      ],
-      "Sid": "b54d207730434db6bcce206c10a8c1d5"
+      ]
     },
     {
+      "Sid": "RdsPerms",
       "Effect": "Allow",
       "Action": [
         "rds:DescribeDBInstances",
@@ -23,18 +24,27 @@
       ],
       "Resource": [
         "*"
-      ],
-      "Sid": "c66059ac8af547c2888970217af56777"
+      ]
     },
     {
+      "Sid": "StsPerms",
       "Effect": "Allow",
       "Action": [
         "sts:GetCallerIdentity"
       ],
       "Resource": [
         "*"
+      ]
+    },
+    {
+      "Sid": "LoggingPerms",
+      "Effect": "Allow",
+      "Action": [
+          "logs:CreateLogGroup",
+          "logs:CreateLogStream",
+          "logs:PutLogEvents"
       ],
-      "Sid": "f18f9a1e975141f29dda12c3d32ed615"
+      "Resource": "arn:aws:logs:*:*:*"
     }
   ]
 }
