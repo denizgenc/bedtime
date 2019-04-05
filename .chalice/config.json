@@ -4,10 +4,8 @@
   "stages": {
     "dev": {
       "api_gateway_stage": "api",
-      "manage_iam_role": "false",
-      "iam_role_arn": "arn:aws:iam::177649170792:role/aws_bedtime-dev",
-      "autogen_policy": "false",
-      "iam_policy_file": "policy-dev.json"
+      "manage_iam_role": false,
+      "iam_role_arn": "arn:aws:iam::177649170792:role/aws_bedtime_role-dev"
     }
   }
 }
