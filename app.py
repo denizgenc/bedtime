@@ -59,6 +59,7 @@ def ec2_start(event, context):
 def rds_stop(event, context):
     """Stop the RDS instances, log the name of each instance shut down"""
     instances = get_rds_instances()
+    app.log.debug('Untagged instances are: ' + " ".join(instances))
     app.log.debug('Attempting to stop the instances...')
     for instance_id in instances:
         rds.stop_db_instance(DBInstanceIdentifier=instance_id)
@@ -69,6 +70,7 @@ def rds_stop(event, context):
 def rds_start(event, context):
     """Start the RDS instances, log the name of each instance shut down"""
     instances = get_rds_instances()
+    app.log.debug('Untagged instances are: ' + " ".join(instances))
     app.log.debug('Attempting to start the instances...')
     for instance_id in instances:
         rds.start_db_instance(DBInstanceIdentifier=instance_id)
