@@ -14,21 +14,22 @@ REGION = boto3.session.Session().region_name
 
 
 def get_ec2_instances():
-    """Return a list of EC2 instance ids which aren't tagged with KeepAlive"""
+    """Return a list of EC2 instance ids which aren't tagged with KeepAwake"""
     instances = [i for instance_list in
                  [x['Instances'] for x in ec2.describe_instances()['Reservations']]
                  for i in instance_list]
     app.log.debug('Got some instances')
     return [x['InstanceId'] for x in instances
-            if sum([(i['Key'] == 'KeepAlive') for i in x['Tags']]) == 0]
+            if sum([(i['Key'] == 'KeepAwake') for i in x['Tags']]) == 0]
 
 
 def get_rds_instances():
-    """Return a list of RDS instance ids which aren't tagged with KeepAlive"""
+    """Return a list of RDS instance ids which aren't tagged with KeepAwake"""
     instances = rds.describe_db_instances()['DBInstances']
     app.log.debug('Got some instances')
+    app.log.debug(instances)
     untagged = [x['DBInstanceIdentifier'] for x in instances
-                if sum([(i['Key'] == 'KeepAlive') for i in
+                if sum([(i['Key'] == 'KeepAwake') for i in
                         rds.list_tags_for_resource(
                             ResourceName=f'arn:aws:rds:{REGION}:{ACCOUNT_ID}:db:{x["DBInstanceIdentifier"]}'
                          )['TagList']]) == 0]
