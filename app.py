@@ -49,10 +49,9 @@ def ec2_stop(event, context):
 def ec2_start(event, context):
     """Start the instances, return/log the name of each instance shut down"""
     instances = get_ec2_instances()
-    ids = [i['InstanceId'] for i in instances]
     app.log.debug('Attempting to start the instances...')
-    ec2.start_instances(InstanceIds=ids)
-    text = 'Started instances with the following IDs:' + '\t'.join(ids)
+    ec2.start_instances(InstanceIds=instances)
+    text = 'Started instances with the following IDs:' + '\t'.join(instances)
     app.log.debug(text)
     return text
 
